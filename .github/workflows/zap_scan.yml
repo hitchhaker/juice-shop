@@ -1,4 +1,4 @@
-name: "ZAP Baseline Scan"
+name: "ZAP Full Scan"
 
 on:
   push:
@@ -16,13 +16,14 @@ jobs:
         with:
           ref: develop
       - name: ZAP Scan
-        uses: zaproxy/action-baseline@v0.7.0
+        uses: zaproxy/action-full-scan@v0.4.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: 'http://owasp-juice-shop-228.herokuapp.com'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a -j'
+          fail_action: true
       - name: Move ZAP report to zap dir
         run: |
-          mkdir zap
+          mkdir -p zap
           cp report_json.json zap/
