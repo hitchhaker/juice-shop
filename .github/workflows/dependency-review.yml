@@ -11,7 +11,7 @@ jobs:
     runs-on: self-hosted 
     name: Scan source code for vulnerable dependencies
     steps:
-      - name: 'Checkout Repository'
+      - name: "Checkout Repository"
         uses: actions/checkout@v3
-      - name: Dependency Review
+      - name: "Dependency Review"
         uses: actions/dependency-review-action@v1
