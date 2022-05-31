@@ -17,4 +17,4 @@ jobs:
           JIRA_ISSUE_TYPE: Security
           JIRA_ISSUE_LABELS: Security
           JIRA_WATCHERS: dorest28@gmail.com
-          JIRA_RESTRICTED_COMMENT_ROLE: Security-champ
+          JIRA_RESTRICTED_COMMENT_ROLE: "*"
