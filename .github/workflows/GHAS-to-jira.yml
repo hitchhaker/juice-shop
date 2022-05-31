@@ -20,3 +20,4 @@ jobs:
         env:
           issuetypeNames: 'Security'
           issuetypeId: 'Security'
+          issuetype: 'Security'
