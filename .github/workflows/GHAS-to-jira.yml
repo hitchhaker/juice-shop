@@ -17,3 +17,5 @@ jobs:
           jira_labels: 'Security'
           issuetype: 'Security'
           sync_direction: 'gh2jira'
+        env:
+          issuetypeNames: 'Security'
