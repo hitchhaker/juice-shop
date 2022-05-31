@@ -9,9 +9,9 @@ jobs:
       - name: "Sync security alerts to Jira issues"
         uses: reload/github-security-jira@v1.x
         env:
-          GH_SECURITY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_SECURITY_TOKEN: ${{ secrets.GITHUBSECURITYTOKEN }}
           JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
-          JIRA_HOST: ${{ secrets.JIRA_HOST }}
+          JIRA_HOST: https://hitchhaker-cyberrange.atlassian.net/
           JIRA_USER: dorest28@gmail.com
           JIRA_PROJECT: Tetropinks
           JIRA_ISSUE_TYPE: Security
