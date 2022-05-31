@@ -9,12 +9,10 @@ jobs:
       - name: "Sync alerts to Jira issues"
         uses: github/ghas-jira-integration@v1
         with:
-          jira_url: https://hitchhaker-cyberrange.atlassian.net
-          jira_user: dorest28@gmail.com
-          jira_token: ${{ secrets.JIRA_TOKEN }}
-          jira_project: TET
-          github_token: ${{ secrets.GITHUBSECURITYTOKEN }}
-          jira_labels: Security
-          sync_direction: gh2jira       
-        env:
-          JIRA_ISSUE_TYPE: Security   
+          jira_url: 'https://hitchhaker-cyberrange.atlassian.net'
+          jira_user: 'dorest28@gmail.com'
+          jira_token: '${{ secrets.JIRA_TOKEN }}'
+          jira_project: 'TET'
+          github_token: '${{ secrets.GITHUBSECURITYTOKEN }}'
+          jira_labels: 'Security'
+          sync_direction: 'gh2jira'
