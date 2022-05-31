@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   syncGHAStoJira:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: "Sync alerts to Jira issues"
         uses: github/ghas-jira-integration@v1
