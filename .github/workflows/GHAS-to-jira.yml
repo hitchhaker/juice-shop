@@ -7,7 +7,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Sync alerts to Jira issues
-        uses: github/ghas-jira-integration@v1.2.2
+        uses: github/ghas-jira-integration@v1.2.0
         with:
           jira_url: https://hitchhaker-cyberrange.atlassian.net
           jira_user: dorest28@gmail.com
