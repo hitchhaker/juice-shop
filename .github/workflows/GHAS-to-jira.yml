@@ -19,3 +19,4 @@ jobs:
           sync_direction: 'gh2jira'
         env:
           issuetypeNames: 'Security'
+          issuetypeId: 'Security'
