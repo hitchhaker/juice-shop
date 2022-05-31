@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   syncGHAStoJira:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: "Sync alerts to Jira issues"
         uses: github/ghas-jira-integration@v1
@@ -15,4 +15,5 @@ jobs:
           jira_project: 'TET'
           github_token: '${{ secrets.GITHUBSECURITYTOKEN }}'
           jira_labels: 'Security'
+          issue_type: 'Security'
           sync_direction: 'gh2jira'
