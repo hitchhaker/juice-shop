@@ -13,6 +13,6 @@ jobs:
           JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
           JIRA_HOST: https://hitchhaker-cyberrange.atlassian.net/
           JIRA_USER: dorest28@gmail.com
-          JIRA_PROJECT: Tetropinks
+          JIRA_PROJECT: TET
           JIRA_ISSUE_TYPE: Security
           JIRA_WATCHERS: dorest28@gmail.com
