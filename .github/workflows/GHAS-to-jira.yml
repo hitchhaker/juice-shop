@@ -1,19 +1,18 @@
-name: GitHub Security Alerts for Jira
+name: "Sync GHAS to Jira"
 
 on: [push]
 
 jobs:
-  syncSecurityAlerts:
+  syncGHAStoJira:
     runs-on: self-hosted
     steps:
-      - name: "Sync security alerts to Jira issues"
-        uses: reload/github-security-jira@v1.1.0
-        env:
-          GH_SECURITY_TOKEN: ${{ secrets.GITHUBSECURITYTOKEN }}
-          JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
-          JIRA_HOST: https://hitchhaker-cyberrange.atlassian.net
-          JIRA_USER: dorest28@gmail.com
-          JIRA_PROJECT: TET
-          JIRA_ISSUE_TYPE: Security
-          JIRA_ISSUE_LABELS: Security
-          JIRA_WATCHERS: dorest28@gmail.com
+      - name: Sync alerts to Jira issues
+        uses: github/ghas-jira-integration@v1
+        with:
+          jira_url: https://hitchhaker-cyberrange.atlassian.net
+          jira_user: dorest28@gmail.com
+          jira_token: '${{ secrets.JIRA_TOKEN }}'
+          jira_project: TET
+          github_token: ${{ secrets.GITHUBSECURITYTOKEN }}
+          jira_labels: Security
+          sync_direction: 'gh2jira'
