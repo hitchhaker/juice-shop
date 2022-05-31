@@ -15,5 +15,5 @@ jobs:
           jira_project: 'TET'
           github_token: '${{ secrets.GITHUBSECURITYTOKEN }}'
           jira_labels: 'Security'
-          issue_type: 'Security'
+          issuetype: 'Security'
           sync_direction: 'gh2jira'
