@@ -4,7 +4,9 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    target-branch: "develop" 
+    target-branch: "develop"
+    labels:
+      - "dependencies" 
   - package-ecosystem: "npm"
     directory: "/frontend"
     schedule:
