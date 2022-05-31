@@ -7,7 +7,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: "Sync security alerts to Jira issues"
-        uses: reload/github-security-jira@v1.x
+        uses: reload/github-security-jira@v1.1.0
         env:
           GH_SECURITY_TOKEN: ${{ secrets.GITHUBSECURITYTOKEN }}
           JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
