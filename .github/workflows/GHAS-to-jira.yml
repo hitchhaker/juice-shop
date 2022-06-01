@@ -13,6 +13,6 @@ jobs:
           jira_user: dorest28@gmail.com
           jira_token: ${{ secrets.JIRA_TOKEN }}
           github_token: ${{ secrets.GITHUBSECURITYTOKEN }}
-          jira_project: TET
+          jira_project: MET
           jira_labels: Security
           sync_direction: gh2jira
