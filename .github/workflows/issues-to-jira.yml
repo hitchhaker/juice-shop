@@ -1,0 +1,20 @@
+name: Jira Sync
+on:
+  issues:
+    types: [opened, labeled, unlabeled]
+  issue_comment:
+    types: [created]
+jobs:
+  sync:
+    name: Sync Items
+    runs-on: self-hosted
+    steps:
+      - name: Sync
+        uses: nakulshukla8/github-action-issue-to-jira@v2.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          jiraHost: https://hitchhaker-cyberrange.atlassian.net
+          jiraUsername: dorest28@gmail.com
+          jiraPassword: ${{ secrets.JIRA_TOKEN }}
+          project: MET
