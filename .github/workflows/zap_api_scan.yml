@@ -28,7 +28,7 @@ jobs:
       - name: Copy ZAP files
         run: |
           echo "Moving configuration file to results folder"
-          mkdir -p $HOME/opt/github-actions-runners/juice-shop/_work/juice-shop/results
+          mkdir -p results
           pwd
           cp alerts.conf results/alerts.conf
           cp report_json.json results/report_json.json
