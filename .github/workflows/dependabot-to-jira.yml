@@ -1,4 +1,4 @@
-name: Dependabot Jira Sync
+name: "Dependabot Jira Sync"
 
 on:
   pull_request:
