@@ -25,6 +25,7 @@ jobs:
           target: 'http://owasp-juice-shop-228.herokuapp.com'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a -d -g alerts.conf -r report_html.html -J report_json.json'
+      - name: Copy ZAP files
         run: |
           echo "Moving configuration file to results folder"
           mkdir -p $HOME/opt/github-actions-runners/juice-shop/_work/juice-shop/results
