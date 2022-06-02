@@ -1,0 +1,30 @@
+name: "Dependabot Jira Sync"
+
+on:
+  pull_request:
+    types: [opened]
+  workflow_dispatch:
+  
+
+jobs:
+  run_jira_ticket:
+    name: Create Jira Ticket for Dependabot PR
+    if: contains(github.event.pull_request.labels.*.name, 'Dependencies')
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Create Jira Ticket and Update PR Title
+      env:
+        GITHUB_JSON: ${{ toJson(github) }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        JIRA_USER: dorest28@gmail.com
+        JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
+      run: python3 scripts/jira_ticket.py

@@ -1,0 +1,20 @@
+name: "Sync GHAS to Jira"
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'    # trigger synchronization every 10 minutes
+
+jobs:
+  syncGHAStoJira:
+    runs-on: self-hosted
+    steps:
+      - name: "Sync alerts to Jira issues"
+        uses: github/ghas-jira-integration@v1.2.3
+        with:
+          jira_url: https://hitchhaker-cyberrange.atlassian.net
+          jira_user: dorest28@gmail.com
+          jira_token: ${{ secrets.JIRA_TOKEN }}
+          github_token: ${{ secrets.GITHUBSECURITYTOKEN }}
+          jira_project: MET
+          jira_labels: Security
+          sync_direction: gh2jira
