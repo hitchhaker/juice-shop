@@ -24,4 +24,8 @@ jobs:
           format: openapi
           target: 'http://owasp-juice-shop-228.herokuapp.com'
           rules_file_name: '.zap/rules.tsv'
-          cmd_options: '-a'
+          cmd_options: '-a -d -g alerts.conf'
+        run: |
+          echo "Moving configuration file to results folder"
+          mkdir -p $HOME/opt/github-actions-runners/juice-shop/_work/juice-shop/results
+          cp alerts.conf results/
