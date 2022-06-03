@@ -25,7 +25,7 @@ jobs:
           format: openapi
           target: 'http://owasp-juice-shop-228.herokuapp.com'
           rules_file_name: '.zap/rules.tsv'
-          cmd_options: '-a -d -g alerts.conf -r report_html.html -J report_json.json' # -S runs scan in safe mode
+          cmd_options: '-a -d' # -S runs scan in safe mode
       - name: Copy ZAP files
         run: |
           echo "Moving configuration file to results folder"

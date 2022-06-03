@@ -23,7 +23,7 @@ jobs:
           target: 'http://10.0.4.240:3000'
           docker_name: 'owasp/zap2docker-stable'
           rules_file_name: '.zap/rules.tsv'
-          cmd_options: '-a -d -g alerts.conf -r report_html.html -J report_json.json'
+          cmd_options: '-a -d'
           fail_action: false
       - name: Copy ZAP files
         if: always()
@@ -35,8 +35,3 @@ jobs:
           cp alerts.conf results/full-alerts.conf
           cp report_json.json results/full-report_json.json
           cp report_html.html results/full-report_html.html
-      - name: "Report to Jira"
-        env:
-          JIRA_PROJECT: "MET"
-          target_host: "http://10.0.4.240:3000"
-          report_file: full-report
