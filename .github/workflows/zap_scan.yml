@@ -24,6 +24,7 @@ jobs:
           cmd_options: '-a -d -g full-alerts.conf -r full-report_html.html -J full-report_json.json'
           fail_action: true
       - name: Copy ZAP files
+        if: always()
         run: |
           echo "Moving configuration file to results folder"
           mkdir -p results
