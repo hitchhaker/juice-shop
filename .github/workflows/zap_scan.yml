@@ -12,14 +12,14 @@ jobs:
     name: Scan Juice Shop preview instance on Heroku
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v3 #v2: v2.3.4 available
+        uses: actions/checkout@v3
         with:
           ref: develop
       - name: ZAP Scan
         uses: zaproxy/action-full-scan@v0.4.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          target: 'http://owasp-juice-shop-228.herokuapp.com'
+          target: 'http://10.0.4.240:3000'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a -d -g full-alerts.conf -r full-report_html.html -J full-report_json.json'
           fail_action: true
