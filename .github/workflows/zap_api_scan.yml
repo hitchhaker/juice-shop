@@ -26,12 +26,12 @@ jobs:
           target: 'http://owasp-juice-shop-228.herokuapp.com'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a -d' # -S runs scan in safe mode
-      - name: Copy ZAP files
-        run: |
-          echo "Moving configuration file to results folder"
-          mkdir -p results
-          echo "Current directory is:"
-          pwd
-          cp alerts.conf results/api-alerts.conf
-          cp report_json.json results/api-report_json.json
-          cp report_html.html results/api-report_html.html
+#      - name: Copy ZAP files
+#        run: |
+#          echo "Moving configuration file to results folder"
+#          mkdir -p results
+#          echo "Current directory is:"
+#          pwd
+#          cp alerts.conf results/api-alerts.conf
+#          cp report_json.json results/api-report_json.json
+#          cp report_html.html results/api-report_html.html
