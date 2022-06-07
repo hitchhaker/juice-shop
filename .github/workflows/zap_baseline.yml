@@ -1,0 +1,35 @@
+name: "ZAP Baseline Scan"
+
+on:
+  push:
+    branches: [ develop, master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  zap_scan:
+    runs-on: self-hosted 
+    name: Scan Juice Shop preview instance on Heroku
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.7.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target: 'https://owasp-juice-shop-228.herokuapp.com'
+          docker_name: 'owasp/zap2docker-stable'
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-a -d -g alerts-baseline.conf'
+          fail_action: false
+      - name: Copy ZAP files
+        if: always()
+        run: |
+          echo "Moving configuration file to results folder"
+          mkdir -p results
+          echo "Current directory is:"
+          pwd
+          cp alerts-baseline.conf results/alerts-baseline.conf
