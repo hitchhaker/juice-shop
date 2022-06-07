@@ -22,7 +22,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: 'http://10.0.4.240:3000'
           docker_name: 'owasp/zap2docker-stable'
-          rules_file_name: '.zap/rules.tsv'
+          rules_file_name: '.zap/full_rules.tsv'
           cmd_options: '-a -d'
           fail_action: false
 #      - name: Copy ZAP files

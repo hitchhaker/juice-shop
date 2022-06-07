@@ -23,15 +23,15 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           docker_name: 'owasp/zap2docker-stable'
           format: openapi
-          target: 'http://owasp-juice-shop-228.herokuapp.com'
-          rules_file_name: '.zap/rules.tsv'
-          cmd_options: '-a -d' # -S runs scan in safe mode
-#      - name: Copy ZAP files
-#        run: |
-#          echo "Moving configuration file to results folder"
-#          mkdir -p results
-#          echo "Current directory is:"
-#          pwd
-#          cp alerts.conf results/api-alerts.conf
-#          cp report_json.json results/api-report_json.json
-#          cp report_html.html results/api-report_html.html
+          target: '.zap/openapi.json'
+          rules_file_name: '.zap/api_rules.tsv'
+          allow_issue_writing: true
+          fail_action: false
+          cmd_options: '-a -d -r report_html.html' # -S runs scan in safe mode
+      - name: Copy ZAP files
+        run: |
+          echo "Moving configuration file to results folder"
+          mkdir -p results
+          echo "Current directory is:"
+          pwd
+          cp report_html.html results/au-report_html.html
