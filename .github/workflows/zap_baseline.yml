@@ -10,7 +10,7 @@ on:
 jobs:
   zap_scan:
     runs-on: self-hosted 
-    name: Scan Juice Shop preview instance on Heroku
+    name: Scan Juice Shop instance on Heroku
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v3
