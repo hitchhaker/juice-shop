@@ -13,9 +13,9 @@ jobs:
     name: Scan API of Juice Shop instance on Heroku
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          ref: master
+          ref: develop
 
       - name: ZAP Scan
         uses: zaproxy/action-api-scan@v0.1.1
