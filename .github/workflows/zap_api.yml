@@ -34,4 +34,4 @@ jobs:
           mkdir -p results
           echo "Current directory is:"
           pwd
-          cp report_html.html results/au-report_html-1rule.html
+          cp report_html.html results/au-report_html-3rules.html
