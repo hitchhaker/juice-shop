@@ -3,4 +3,4 @@
 -config replacer.full_list\\(0\\).matchtype=REQ_HEADER \  
 -config replacer.full_list\\(0\\).matchstr=Ocp-Apim-Subscription-Key \  
 -config replacer.full_list\\(0\\).regex=false \  
--config replacer.full_list\\(0\\).replacement=$ZAP_AUTH_TOKEN \
+-config replacer.full_list\\(0\\).replacement=Changeme \
