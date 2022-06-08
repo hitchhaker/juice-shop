@@ -7,9 +7,6 @@ on:
     branches: [ master ]
   workflow_dispatch:
 
-env:
-  ZAP_AUTH_TOKEN: ${{ZAP_AUTH_TOKEN}}
-
 jobs:
   zap_scan:
     runs-on: self-hosted 
@@ -19,7 +16,10 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: develop
-
+      
+      - name: Create var for ZAP Auth
+        run: |
+          export ZAP_AUTH_TOKEN=${{ZAP_AUTH_TOKEN}}
       # Scan first API endpoint
       - name: ZAP Scan Profile Management API
         uses: zaproxy/action-api-scan@v0.1.1
