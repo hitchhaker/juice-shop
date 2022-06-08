@@ -11,6 +11,8 @@ jobs:
   zap_scan:
     runs-on: self-hosted 
     name: Scan API of Juice Shop instance on Heroku
+    env:
+      ZAP_AUTH_TOKEN: ${{ZAP_AUTH_TOKEN}}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -28,7 +30,7 @@ jobs:
           rules_file_name: '.zap/api_rules-test.tsv'
           allow_issue_writing: true
           fail_action: false
-          cmd_options: '-a -d -r report_html.html'
+          cmd_options: '-a -d -r report_html.html -z "-configfile .zap/options.prop"'
       - name: Copy ZAP files 1
         run: |
           echo "Moving configuration file to results folder"
@@ -48,7 +50,7 @@ jobs:
           rules_file_name: '.zap/api_rules-test.tsv'
           allow_issue_writing: true
           fail_action: false
-          cmd_options: '-a -d -r report_html.html'
+          cmd_options: '-a -d -r report_html.html -z "-configfile .zap/options.prop"'
       - name: Copy ZAP files 2
         run: |
           echo "Moving configuration file to results folder"
