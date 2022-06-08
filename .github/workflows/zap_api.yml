@@ -7,12 +7,13 @@ on:
     branches: [ master ]
   workflow_dispatch:
 
+env:
+  ZAP_AUTH_TOKEN: ${{ZAP_AUTH_TOKEN}}
+
 jobs:
   zap_scan:
     runs-on: self-hosted 
     name: Scan API of Juice Shop instance on Heroku
-    env:
-      ZAP_AUTH_TOKEN: ${{ZAP_AUTH_TOKEN}}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
