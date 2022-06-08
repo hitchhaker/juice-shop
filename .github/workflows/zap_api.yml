@@ -10,7 +10,7 @@ on:
 jobs:
   zap_scan:
     runs-on: self-hosted 
-    name: Scan API of Juice Shop instance on Heroku
+    name: Scan API
     steps:
       - name: Checkout
         uses: actions/checkout@v3
