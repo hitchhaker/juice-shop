@@ -28,7 +28,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           docker_name: 'owasp/zap2docker-stable'
           format: openapi
-          target: '.zap/Profile_Management_API.mock.rev1.yaml'
+          target: 'owasp-juice-shop-228.herokuapp.com'
+          #target: '.zap/Profile_Management_API.mock.rev1.yaml'
           rules_file_name: '.zap/api_rules-test.tsv'
           allow_issue_writing: true
           fail_action: false
@@ -43,6 +44,7 @@ jobs:
 
       # Scan second API endpoint
       - name: ZAP Scan Case Management API
+        if: ${{ false }}
         uses: zaproxy/action-api-scan@v0.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -54,6 +56,7 @@ jobs:
           fail_action: false
           cmd_options: '-a -d -r report_html.html -z .zap/options.prop'
       - name: Copy ZAP files 2
+        if: ${{ false }}
         run: |
           echo "Moving configuration file to results folder"
           mkdir -p results
