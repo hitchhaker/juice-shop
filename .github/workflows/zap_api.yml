@@ -19,7 +19,8 @@ jobs:
       
       - name: Create var for ZAP Auth
         run: |
-          export ZAP_AUTH_TOKEN=${{ZAP_AUTH_TOKEN}}
+          export ZAP_AUTH_TOKEN=${{secrets.ZAP_AUTH_TOKEN}}
+          
       # Scan first API endpoint
       - name: ZAP Scan Profile Management API
         uses: zaproxy/action-api-scan@v0.1.1
