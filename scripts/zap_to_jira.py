@@ -16,7 +16,7 @@ new_issue_data = {
         "project": { "key": os.environ.get('JIRA_PROJECT') },
         "summary": "[ZAP Security Report] - " + os.environ.get('REPORT_NAME') + " | " + str_date,
         "description": details + "\n\n" + descr,
-        "issuetype": { "name": "Bug" },
+        "issuetype": { "name": "Bug" }, # can be changed to some custom issuetype that exists in Jira like "Security"
         "priority": { "id": "2" },
         "assignee": { "name": "" }
     }
