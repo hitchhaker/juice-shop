@@ -51,7 +51,7 @@ jobs:
           JIRA_USER: dorest28@gmail.com
           JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
           JIRA_PROJECT: MET
-          JIRA_BASE_URL: https://hitchhaker-cyberrange.atlassian.net
+          JIRA_BASE_URL: https://hitchhaker-cyberrange.atlassian.net/rest/api/2/issue/
         run: python3 scripts/zap_to_jira.py
 
       # # Scan second API endpoint
