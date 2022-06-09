@@ -182,7 +182,7 @@
         "yaml-schema-validator": "^1.2.2",
         "z85": "^0.0.2",
         "openldap2-client": "2.4.46-9.19.2",
-        "tar": "2.2.2"
+
     },
     "devDependencies": {
         "@istanbuljs/nyc-config-typescript": "^1.0.1",
