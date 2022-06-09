@@ -78,14 +78,6 @@ jobs:
           cp report_html.html results/m2-report_html.html
       
       # Publish second ZAP report to Jira
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r scripts/requirements.txt
       - name: Publish ZAP report to Jira
         env:
           JIRA_USER: dorest28@gmail.com
