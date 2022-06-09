@@ -5,7 +5,6 @@ on:
     branches: [ develop, master ]
   pull_request:
     branches: [ master ]
-  workflow_dispatch:
 
 jobs:
   zap_scan:
@@ -37,7 +36,8 @@ jobs:
           echo "Current directory is:"
           pwd
           cp report_html.html results/m1-report_html.html
-
+      
+      # Publish first ZAP report to Jira
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -52,24 +52,43 @@ jobs:
           JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
           JIRA_PROJECT: MET
           JIRA_BASE_URL: https://hitchhaker-cyberrange.atlassian.net/rest/api/2/issue/
+          REPORT_NAME: "Profile-Management-API"
         run: python3 scripts/zap_to_jira.py
 
-      # # Scan second API endpoint
-      # - name: ZAP Scan Case Management API
-      #   uses: zaproxy/action-api-scan@v0.1.1
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     docker_name: 'owasp/zap2docker-stable'
-      #     format: openapi
-      #     target: 'http://10.0.4.240:3000'
-      #     rules_file_name: '.zap/api_rules-test.tsv'
-      #     allow_issue_writing: true
-      #     fail_action: false
-      #     cmd_options: '-a -d -z "-config replacer.full_list(0).description=auth1 -config replacer.full_list(0).enabled=true -config replacer.full_list(0).matchtype=REQ_HEADER -config replacer.full_list(0).matchstr=Ocp-Apim-Subscription-Key -config replacer.full_list(0).regex=false -config replacer.full_list(0).replacement=${{secrets.ZAP_AUTH_TOKEN}}"'
-      # - name: Copy ZAP files from second endpoint
-      #   run: |
-      #     echo "Moving configuration file to results folder"
-      #     mkdir -p results
-      #     echo "Current directory is:"
-      #     pwd
-      #     cp report_html.html results/m2-report_html.html
+      # Scan second API endpoint
+      - name: ZAP Scan Case Management API
+        uses: zaproxy/action-api-scan@v0.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          docker_name: 'owasp/zap2docker-stable'
+          format: openapi
+          target: 'http://10.0.4.240:3000'
+          rules_file_name: '.zap/api_rules-test.tsv'
+          allow_issue_writing: true
+          fail_action: false
+          cmd_options: '-a -d -z "-config replacer.full_list(0).description=auth1 -config replacer.full_list(0).enabled=true -config replacer.full_list(0).matchtype=REQ_HEADER -config replacer.full_list(0).matchstr=Ocp-Apim-Subscription-Key -config replacer.full_list(0).regex=false -config replacer.full_list(0).replacement=${{secrets.ZAP_AUTH_TOKEN}}"'
+      - name: Copy ZAP files from second endpoint
+        run: |
+          echo "Moving configuration file to results folder"
+          mkdir -p results
+          echo "Current directory is:"
+          pwd
+          cp report_html.html results/m2-report_html.html
+      
+      # Publish second ZAP report to Jira
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements.txt
+      - name: Publish ZAP report to Jira
+        env:
+          JIRA_USER: dorest28@gmail.com
+          JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
+          JIRA_PROJECT: MET
+          JIRA_BASE_URL: https://hitchhaker-cyberrange.atlassian.net/rest/api/2/issue/
+          REPORT_NAME: "Customer-Management-API"
+        run: python3 scripts/zap_to_jira.py

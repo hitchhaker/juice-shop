@@ -14,7 +14,7 @@ details.replace("\t", "    ")
 new_issue_data = {
     "fields": {
         "project": { "key": os.environ.get('JIRA_PROJECT') },
-        "summary": "[ZAP Security Report] - " + str_date,
+        "summary": "[ZAP Security Report] - " + os.environ.get('REPORT_NAME') + str_date,
         "description": details + "\n\n" + descr,
         "issuetype": { "name": "Bug" },
         "priority": { "id": "2" },
