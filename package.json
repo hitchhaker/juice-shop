@@ -181,7 +181,7 @@
         "winston": "1.3.3",
         "yaml-schema-validator": "^1.2.2",
         "z85": "^0.0.2",
-        "openldap2-client": "2.4.46-9.19.2",
+        "openldap2-client": "2.4.46-9.19.2"
 
     },
     "devDependencies": {
