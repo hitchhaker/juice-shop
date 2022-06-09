@@ -24,7 +24,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           docker_name: 'owasp/zap2docker-stable'
           format: openapi
-          #target: 'http://owasp-juice-shop-228.herokuapp.com'
           target: '.zap/Profile_Management_API.mock.rev1.yaml'
           rules_file_name: '.zap/api_rules-test.tsv'
           allow_issue_writing: true
