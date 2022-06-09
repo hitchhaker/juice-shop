@@ -2,7 +2,7 @@
 import os
 import logging
 import requests 
-import datetime
+from datetime import datetime
 
 # Write the report into a file
 filename = 'report_html.html'
