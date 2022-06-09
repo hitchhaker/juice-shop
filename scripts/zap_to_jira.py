@@ -25,7 +25,7 @@ logging.debug(new_issue_data)
 auth = (os.environ.get('JIRA_USER'), os.environ.get('JIRA_TOKEN'))
 r = requests.post(base_url, json=new_issue_data, auth=auth)
 logging.debug(r.text)
-r = r.json()
+#r = r.json()
 issue_key = r["id"]
 # Add the html report as an attachment
 r = requests.post(base_url + "/{}/attachments".format(issue_key), auth=auth,
