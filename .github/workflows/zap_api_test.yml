@@ -1,4 +1,4 @@
-name: "ZAP API Scan"
+name: "ZAP API test-scan"
 
 on:
   push:
