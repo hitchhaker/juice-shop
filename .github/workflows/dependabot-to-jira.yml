@@ -9,7 +9,7 @@ on:
 jobs:
   run_jira_ticket:
     name: Create Jira Ticket for Dependabot PR
-    if: contains(github.event.pull_request.labels.*.name, 'Dependencies')
+    if: contains(github.event.pull_request.labels.*.name, 'dependencies')
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v3
