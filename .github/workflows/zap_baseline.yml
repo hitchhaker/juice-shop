@@ -1,0 +1,27 @@
+name: "ZAP Baseline Scan"
+
+on:
+  push:
+    branches: [ develop, master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  zap_scan:
+    runs-on: self-hosted 
+    name: Scan Juice Shop instance on Heroku
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.7.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target: 'https://owasp-juice-shop-228.herokuapp.com'
+          docker_name: 'owasp/zap2docker-stable'
+          rules_file_name: '.zap/baseline_rules.tsv'
+          cmd_options: '-a -d'
+          fail_action: false
