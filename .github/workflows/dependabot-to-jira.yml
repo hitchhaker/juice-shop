@@ -31,4 +31,4 @@ jobs:
         JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
         JIRA_PROJECT: MET
         JIRA_URL: https://hitchhaker-cyberrange.atlassian.net/rest/api/2/issue/
-      run: python3 scripts/jira_ticket.py
+      run: python3 scripts/dependabot_to_jira.py

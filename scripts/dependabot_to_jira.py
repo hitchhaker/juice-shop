@@ -19,9 +19,9 @@ def createJiraTicket(jiraUser, jiraPass, githubPRTitle, githubPRURL):
   jiraBody = {
     "fields": {
       "project": {"key": os.environ.get('JIRA_PROJECT')},
-      "summary": "[Dependabot]: " + f"{githubPRTitle}",
-      "description": f"{githubPRURL} | {jiraUser}",
-      "issuetype": {"name": "Tiket"}
+      "summary": "[Dependabot]: " + githubPRTitle,
+      "description": githubPRURL + "|" + jiraUser,
+      "issuetype": {"name": "Bug"}
     }
   }
   response = requests.post(jiraUrl, auth=(jiraUser, jiraPass), headers=jiraHeaders, json=jiraBody)
