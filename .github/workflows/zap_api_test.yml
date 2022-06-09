@@ -15,8 +15,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: develop
-          
+          ref: develop         
+
       # Scan first API endpoint
       - name: ZAP Scan Profile Management API
         uses: zaproxy/action-api-scan@v0.1.1
@@ -24,8 +24,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           docker_name: 'owasp/zap2docker-stable'
           format: openapi
-          #target: 'http://owasp-juice-shop-228.herokuapp.com'
-          target: '.zap/Profile_Management_API.mock.rev1.yaml'
+          target: 'http://owasp-juice-shop-228.herokuapp.com'
           rules_file_name: '.zap/api_rules-test.tsv'
           allow_issue_writing: true
           fail_action: false
@@ -38,8 +37,7 @@ jobs:
           echo "Current directory is:"
           pwd
           cp report_html.html results/m1-report_html.html
-      
-      # Publish first ZAP report to Jira
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -54,23 +52,23 @@ jobs:
           JIRA_PROJECT: MET
           JIRA_BASE_URL: https://hitchhaker-cyberrange.atlassian.net/
         run: python3 scripts/zap_to_jira.py
-      
-      # Scan second API endpoint
-      - name: ZAP Scan Case Management API
-        uses: zaproxy/action-api-scan@v0.1.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          docker_name: 'owasp/zap2docker-stable'
-          format: openapi
-          target: '.zap/Case_Management_API.yaml'
-          rules_file_name: '.zap/api_rules-test.tsv'
-          allow_issue_writing: true
-          fail_action: false
-          cmd_options: '-a -d -z "-config replacer.full_list(0).description=auth1 -config replacer.full_list(0).enabled=true -config replacer.full_list(0).matchtype=REQ_HEADER -config replacer.full_list(0).matchstr=Ocp-Apim-Subscription-Key -config replacer.full_list(0).regex=false -config replacer.full_list(0).replacement=${{secrets.ZAP_AUTH_TOKEN}}"'
-      - name: Copy ZAP files from second endpoint
-        run: |
-          echo "Moving configuration file to results folder"
-          mkdir -p results
-          echo "Current directory is:"
-          pwd
-          cp report_html.html results/m2-report_html.html
+
+      # # Scan second API endpoint
+      # - name: ZAP Scan Case Management API
+      #   uses: zaproxy/action-api-scan@v0.1.1
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     docker_name: 'owasp/zap2docker-stable'
+      #     format: openapi
+      #     target: 'http://10.0.4.240:3000'
+      #     rules_file_name: '.zap/api_rules-test.tsv'
+      #     allow_issue_writing: true
+      #     fail_action: false
+      #     cmd_options: '-a -d -z "-config replacer.full_list(0).description=auth1 -config replacer.full_list(0).enabled=true -config replacer.full_list(0).matchtype=REQ_HEADER -config replacer.full_list(0).matchstr=Ocp-Apim-Subscription-Key -config replacer.full_list(0).regex=false -config replacer.full_list(0).replacement=${{secrets.ZAP_AUTH_TOKEN}}"'
+      # - name: Copy ZAP files from second endpoint
+      #   run: |
+      #     echo "Moving configuration file to results folder"
+      #     mkdir -p results
+      #     echo "Current directory is:"
+      #     pwd
+      #     cp report_html.html results/m2-report_html.html
