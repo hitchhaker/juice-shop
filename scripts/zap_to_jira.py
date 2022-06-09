@@ -26,7 +26,9 @@ auth = (os.environ.get('JIRA_USER'), os.environ.get('JIRA_TOKEN'))
 r = requests.post(base_url, json=new_issue_data, auth=auth)
 logging.debug(r.text)
 response_in_json = r.json()
-issue_key = response_in_json["id"]
+print(response_in_json)
+
+issue_key = response_in_json['id']
 # Add the html report as an attachment
 r = requests.post(base_url + "/{}/attachments".format(issue_key), auth=auth,
     headers={"X-Atlassian-Token": "no-check"},
