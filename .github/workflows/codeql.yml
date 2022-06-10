@@ -69,8 +69,10 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
+
   syncGHAStoJira:
     runs-on: self-hosted
+    needs: analyze
     steps:
       - name: "Sync alerts to Jira issues"
         uses: github/ghas-jira-integration@v1.2.3
