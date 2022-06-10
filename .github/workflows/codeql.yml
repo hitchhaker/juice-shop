@@ -75,10 +75,10 @@ jobs:
       - name: "Sync alerts to Jira issues"
         uses: github/ghas-jira-integration@v1.2.3
         with:
-          jira_url: https://metrolinx.atlassian.net
-          jira_user: ${{ secrets.JIRA_USER }}
+          jira_url: https://hitchhaker-cyberrange.atlassian.net
+          jira_user: dorest28@gmail.com
           jira_token: ${{ secrets.JIRA_TOKEN }}
-          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          jira_project: C365
+          github_token: ${{ secrets.GITHUBSECURITYTOKEN }}
+          jira_project: MET
           jira_labels: Security
           sync_direction: gh2jira
